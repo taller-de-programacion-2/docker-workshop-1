@@ -14,7 +14,7 @@
 
 **Containers**
 
-Un **container** es una abstracción a nivel aplicación que permite empaquetar el codigo junto con sus dependencias. Multiples containers pueden estar corriendo en la misma maquina y compartiendo los recursos del SO, pero al mismo tiempo manteniendo los containers isolados. Los containers usan menos espacio que las VMs, pueden manejar más aplicaciones y requiren menos recursos del SO.
+Un **container** es una abstracción a nivel aplicación que permite empaquetar el codigo junto con sus dependencias. Multiples containers pueden estar corriendo en la misma maquina y compartiendo los recursos del SO, pero al mismo tiempo manteniendo los containers aislados. Los containers usan menos espacio que las VMs, pueden manejar más aplicaciones y requiren menos recursos del SO.
 
 **Virtual Machines**
 
