@@ -4,7 +4,7 @@
 
 > Nota: Para poder usar el comando `heroku` desde la temrinal deberán instalar Heroku CLI, siguiendo los siguientes pasos: https://devcenter.heroku.com/articles/heroku-cli
 
-Para deployar un container a Heroku deberemos:
+Para deployar un container a Heroku deberemos, usando el material en la carpeta resources/05_heroku:
 
 1) Loggearnos a Heroku:
 
@@ -59,7 +59,7 @@ Para deployar un container a Heroku deberemos:
     docker push registry.heroku.com/pacific-bayou-50273/web
     ```
 
-6) Releasear la imagen a Heroku:
+6) Hacer release de la imagen a Heroku:
 
     ```
     heroku container:release web
