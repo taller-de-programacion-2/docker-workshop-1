@@ -26,6 +26,8 @@ RUN <OTRO_COMANDO>
 
 EXPOSE <PUERTO>
 
+ENV <ENV_VAR_NOMBRE>=<ENV_VAR_VALOR>
+
 CMD <COMANDO PARA INICIAR PROGRAMA>
 ```
 
@@ -35,7 +37,8 @@ CMD <COMANDO PARA INICIAR PROGRAMA>
 
 - Imagen Base: `node:12` de https://hub.docker.com/_/node
 - Working Directory: `/app`
-- Exponga el puerto definido en la variable de entorno `PORT` donde corre la aplicación.
+- Exponga el puerto 3000, donde la aplicación escuchara las requests.
+- Setee la variable de ambiente PORT en el valor 3000.
 - Instale las dependencias del servicio Node con el comando `npm i`.
 - Inicie el servicio Node con el comando `npm start`.
 
