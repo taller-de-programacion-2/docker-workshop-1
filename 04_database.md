@@ -21,53 +21,6 @@ Luego si queremos acceder a la DB, podemos hacer:
 docker exec -it psql-container psql -U postgres
 ```
 
-## Conectar nuestro Servicio Node con la DB Postgres
-
-Antes que nada para poder conectarnos desde nuestro servicio Node a la db postgres, deberemos:
-
-- Agregar la dependencia `pg@^8.0.3` a nuestro `package.json`.
-- Agregar el siguiente código a nuestro servicio:
-
-```js
-const { Client } = require('pg');
-
-const client = new Client({
-  connectionString: process.env.DATABASE_URL,
-  query_timeout: 1000,
-  statement_timeout: 1000
-});
-
-client.connect();
-```
-
-Nota: Esto lo podemos encontrar en `/resources/04_database`, donde además agregamos un endpoint que muestra el status de la DB.
-
-### Ejercicio 3
-
-1. Crear una red de containers usando el comando:
-
-```
-docker network create -d bridge my-network
-```
-
-2. Levantar simultaneamente un container con la db postgres y nuestro servicio Node que se encuentra en `resources/04_database`. Ambos usando el flag:
-
-```
---network network                Connect a container to a network
-```
-
-Notas:
-- Además de las variables de ambiente que necesitamos en [Node Service](03_node_service.md), también debemos pasarle a nuestro servicio Node la url de la db como `DATABASE_URL`.
-- La URL de la DB debería ser `postgres://<USER>:<PASSWORD>@<HOST>:<PORT>/<DATABASE>`, donde en este caso:
-
-  - `USER`: `postgres`
-  - `PASSWORD`: `postgres`
-  - `HOST`: `psql-container`
-  - `PORT`: `5432`
-  - `DATABASE`: `postgres`
-
-3. Verificar que luego que la conexión fue satisfactoria pegándole al endpoint `/status`.
-
 ## Docker Compose
 
 > Para instalar Docker Compose se pueden seguir los pasos descriptos en la siguiente página: https://docs.docker.com/compose/install/
@@ -106,7 +59,7 @@ networks:
     driver: <TYPE>
 ```
 
-### Ejercicio 4
+### Ejercicio 3
 
 1. Crear un `docker-compose.yml` que permita levantar la base de datos y luego el servicio.
 
@@ -152,12 +105,12 @@ COPY wait-for-postgres.sh .
 ```
 -  Instalar `psql` en nuestro `Dockerfile`:
 ```
-RUN apt upstate -y
+RUN apt updtate -y
 RUN apt install -y postgresql
 ```
 - Reemplazar el comando `npm start` por el siguiente en el `Dockerfile`:
 ```
-CMD sh wait-for-postgres.sh $DABASE_URL npm start
+CMD sh wait-for-postgres.sh $DATABASE_URL npm start
 ```
 
 
