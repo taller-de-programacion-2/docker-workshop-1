@@ -66,19 +66,19 @@ networks:
 2. Buildear nuestro servicio con:
 
 ```
-docker-compose build
+docker compose build
 ```
 
 3. Levantar la db con, donde `<SERVICE_1>` es la db postgres:
 
 ```
-docker-compose up -d <SERVICE_1>
+docker compose up -d <SERVICE_1>
 ```
 
 Y luego el servicio con, donde `<SERVICE_2>` es el servicio Node:
 
 ```
-docker-compose up -d <SERVICE_2>
+docker compose up -d <SERVICE_2>
 ```
 
 4. Verificar que luego que la conexión fue satisfactoria pegándole al endpoint `/status`.
@@ -86,7 +86,7 @@ docker-compose up -d <SERVICE_2>
 5. Probar levantar todo con:
 
 ```
-docker-compose up
+docker compose up
 ```
 
 6. Si no funcionó el paso 5, arreglarlo usando el script `wait-for-postgres.sh`. Este script lo que hace es esperar a que la db esté funcionando para ejecutar un comando. Por ejemplo, al hacer:
