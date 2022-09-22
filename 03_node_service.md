@@ -56,9 +56,9 @@ docker image ls
 
 3. Levantar un container usando la imagen buildeada y los siguientes flags:
 
-- `-e <ENV_VAR>=<ENV_VAR_VALUE>`: Para definir una variable de entorno, en este caso será necesario para definir el puerto donde correra internamente la aplicación.
+- `-e <ENV_VAR>=<ENV_VAR_VALUE>`: Para definir/sobreescribir una variable de entorno, en este caso se puede usar para sobreescriibr el puerto donde correra internamente la aplicación.
 
-- `-p <HOST_PORT>:<CONTAINER_PORT>`: Para publicar un puerto expuesto al host.
+- `-p <HOST_PORT>:<CONTAINER_PORT>`: Para publicar un puerto expuesto al host. (Opcional: ¿Cual es la diferencia con -P?)
 
 
 4. Verificar que el servicio esta levantado y corriendo. Correr el comando: 
