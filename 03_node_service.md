@@ -35,7 +35,7 @@ CMD <COMANDO PARA INICIAR PROGRAMA>
 
 1. Crear un Dockerfile que corra el servicio node (ubicado en `/resources/03_node_service`) y cumpla las siguientes condiciones:
 
-- Imagen Base: `node:12` de https://hub.docker.com/_/node
+- Imagen Base: `node:16` de https://hub.docker.com/_/node
 - Working Directory: `/app`
 - Exponga el puerto 3000, donde la aplicación escuchara las requests.
 - Setee la variable de ambiente PORT en el valor 3000.
