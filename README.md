@@ -12,4 +12,4 @@
 
 * [Paso 4: Agregamos una Base de Datos](04_database.md)
 
-* [Paso 5: Deployamos nuestra app a Heroku](05_networks.md)
+* [Paso 5: Usamos networks para comunicar servicios](05_networks.md)

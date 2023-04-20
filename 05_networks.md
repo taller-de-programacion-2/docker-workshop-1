@@ -1,4 +1,4 @@
-# Paso 5: Usamos volumenes con docker-compose
+# Paso 5: Usamos networks para comunicar servicios
 
 ## Usar networks entre microservicios
 
