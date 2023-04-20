@@ -1,26 +1,26 @@
 const express = require("express");
-const { Client } = require("pg");
+const dotenv = require("dotenv");
+
+
+dotenv.config({ path: process.env.ENV_PATH || '.env' });
 
 const app = express();
-const client = new Client({
-  connectionString: process.env.DATABASE_URL,
-  query_timeout: 1000,
-  statement_timeout: 1000,
-  ssl: {
-    rejectUnauthorized: false,
-  },
-});
-
-client.connect();
-
 app.get("/ping", (req, res) => res.send("Pong!"));
 
-app.get("/status", (req, res) =>
-  client.query("SELECT NOW()", (err) =>
-    res.send({ service: "UP", db: err ? "DOWN" : "UP" })
-  )
-);
+app.get("/isConnected", async (req, res) =>{
+  const hostname = process.env.HOSTNAME;
+  const port = process.env.PORT;
+  const url = `${hostname}${port}/isAlive`;
+  try {
+    await fetch(url);
+    res.status(200).send('yep');
+  } catch (e) {
+    res.status(400).send('nop')
+  }
+});
 
-app.listen(process.env.PORT, () => {
+const server = app.listen(process.env.PORT, () => {
   console.log(`App running on port ${process.env.PORT}`);
 });
+
+process.on('SIGTERM', () => {server.close()});
