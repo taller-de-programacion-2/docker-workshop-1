@@ -1,0 +1,14 @@
+services:
+  node_app:
+    container_name: nodeApp
+    build:
+      context: .
+    init: true
+    stdin_open: true
+    volumes:
+      - './.env/:/app/.env'
+      - './index.js/:/app/index.js'
+    environment:
+      - HOSTNAME=????????
+    ports:
+      - '2000:2000'

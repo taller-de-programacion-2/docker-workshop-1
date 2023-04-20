@@ -22,7 +22,7 @@ func headers(w http.ResponseWriter, req *http.Request) {
 
 func main() {
 
-	http.HandleFunc("/hello", isAlive)
+	http.HandleFunc("/isAlive", isAlive)
 	http.HandleFunc("/headers", headers)
 
 	fmt.Println("starting server")
