@@ -8,6 +8,8 @@ services:
       - SERVER_PORT=:8080
 #    ports:
 #      - "8080:8080"
+    networks:
+      - my-network
 
   nginx:
     image: nginx:1.21.6
@@ -15,5 +17,9 @@ services:
       - "5555:80"
     volumes:
       - ./nginx_reverse_proxy.conf:/etc/nginx/conf.d/default.conf:ro
-    links:
-      - dummy-backend
+    networks:
+      - my-network
+
+# This is optional, if not specified docker-compose will create automatically a default network between the containers
+networks:
+  my-network:
