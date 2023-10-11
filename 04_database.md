@@ -113,5 +113,36 @@ RUN apt install -y postgresql
 CMD sh wait-for-postgres.sh $DATABASE_URL npm start
 ```
 
+### Nuevas epocas, nuevas formas
+Hace unos años, la unica alternativa para prender bien la aplicacion luego de la db era con un script como lo explicamos antes. Pero terminaba siendo muy engorroso y confuso, entonces genios de Docker-compose se pusieron de acuerdo e implementaron una nueva forma. A continuacion la nueva forma:
+
+6. (Bis) Agregar a la imagen de postgres:
+``` 
+...
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+...
+```
+Esto lo que va a lograr es que en el servicio de postgres se corra un healthcheck que va a ser cada 10 segundos, con TO de 5 segundos y 5 retries. Una vez terminado van a ocurrer tres posibles estados:
+- healthy: todo OK
+- unhealthy: chequea que se rompio, porque no funciono.
+
+Luego agregar al de nuestro servicio:
+
+```
+...
+    depends_on:
+      postgres:
+        condition: service_healthy
+...
+```
+
+Y ya terminamos, tenemos un servicio configurado para esperar.
+
+
+
 
 [< Node Service](03_node_service.md) | [ Deployamos nuestra app a Heroku>](05_networks.md)

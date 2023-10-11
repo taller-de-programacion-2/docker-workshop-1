@@ -45,4 +45,8 @@ docker image ls
 
 3. Levantar un container que corra `python3` usando la imagen buildeada y lo aprendido en el [Hello World].
 
+### Por puntos inexistentes extra:
+
+4. Cambiar el dockerfile para que solamente use python sin tener que pullear una imagen de ubuntu
+
 [< Hello World](01_hello_world.md) | [Servicio Node >](03_node_service.md)

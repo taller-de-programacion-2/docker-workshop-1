@@ -86,4 +86,8 @@ Si quisieramos podemos hacer:
 - `docker start <CONTAINER ID>`: para poder restartear un container
 - `docker stop <CONTAINER ID>`: para poder stopear un container
 
+Una solucion un poco mas fuerte pero para cuando queremos empezar en serio de 0 es hacer:
+
+- `docker system prune -a`: para eliminar todas las imagenes, containers y volumenes que no se esten usando actualmente
+
 [< Introducción](00_introduction.md) | [Primer Dockerfile >](02_first_dockerfile.md)
