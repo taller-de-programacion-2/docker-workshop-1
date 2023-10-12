@@ -35,7 +35,7 @@ CMD <COMANDO PARA INICIAR PROGRAMA>
 
 1. Crear un Dockerfile que corra el servicio node (ubicado en `/resources/03_node_service`) y cumpla las siguientes condiciones:
 
-- Imagen Base: `node:16` de https://hub.docker.com/_/node
+- Imagen Base: `node:18` de https://hub.docker.com/_/node
 - Working Directory: `/app`
 - Exponga el puerto 3000, donde la aplicación escuchara las requests.
 - Setee la variable de ambiente PORT en el valor 3000.
@@ -56,7 +56,7 @@ docker image ls
 
 3. Levantar un container usando la imagen buildeada y los siguientes flags:
 
-- `-e <ENV_VAR>=<ENV_VAR_VALUE>`: Para definir/sobreescribir una variable de entorno, en este caso se puede usar para sobreescriibr el puerto donde correra internamente la aplicación.
+- `-e <ENV_VAR>=<ENV_VAR_VALUE>`: Para definir/sobreescribir una variable de entorno, en este caso se puede usar para sobreescribir el puerto donde correra internamente la aplicación.
 
 - `-p <HOST_PORT>:<CONTAINER_PORT>`: Para publicar un puerto expuesto al host. (Opcional: ¿Cual es la diferencia con -P?)
 
@@ -79,4 +79,9 @@ Pong
 npm i
 ```
 
+### Preguntas bonus:
+
+- Por que no funciona ctrl c bien?
+- Cual es la diferencia entre docker stop _CONTAINER_ID_ y docker kill _CONTAINER_ID_?
+- Cual es la diferencia entre CMD y ENTRYPOINT?
 [< Primer Dockerfile](02_first_dockerfile.md) | [ Agregamos una DB>](04_database.md)
